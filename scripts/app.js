@@ -168,7 +168,17 @@ angular.module('confusionApp', [])
                 $scope.mycomment.date = new Date().toISOString();
                 
                 // Step 3: Push your comment into the dish's comment array
-                console.log($scope.mycomment);
+                
+                // not sure why use console.log, thus commenting it out
+                // console.log($scope.mycomment);
+
+                // dish is a JS object .
+                // inside the object there is 'comments' which is a JS array.
+                // This newly created comment has to be transformed into a JS object. How? :
+                // On submit, there must be a function. When called, ...
+                // ... the JS object wil be pushed into the comment field.
+                // For that, we use the push method that is available for object arrays. 
+                // 'Push' will push new JS object created for the new comment into that array.
                 $scope.dish.comments.push($scope.mycomment);
                 
                 //Step 4: reset your form to pristine

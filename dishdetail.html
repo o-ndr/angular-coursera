@@ -75,17 +75,17 @@
             <div class="col-xs-9 col-xs-offset-1" ng-controller="DishCommentController">
 
                     <!-- The comment preview is shown only when the information in the form is valid, and the form is not pristine. -->
-                    <ul class="list-unstyled" ng-show="!commentForm.comment.$error.required && !commentForm.firstName.$error.required && !commentForm.comment.$pristine">
+                    <div ng-show="!commentForm.comment.$error.required && !commentForm.firstName.$error.required && !commentForm.comment.$pristine">
                     <!--     <p>Task 3: Here you include the code to show the live preview of the comment</p> -->
-                
-                        <li>  
+                                        
                           <blockquote>
                             <p>{{mycomment.rating}} stars</p>
                             <p>{{mycomment.comment}}</p>
                             <footer>By {{mycomment.author}} on {{mycomment.date| date:'mediumDate'}} </footer>
                           </blockquote>
-                        </li>
-                    </ul>
+                        
+                    </div>
+                    <!-- removed <ul> and <li> above,  jsut eclosing blockquote in a <div>, based on discussions on Coursera -->
                   
 
                 
