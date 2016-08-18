@@ -7,19 +7,19 @@ angular.module('confusionApp')
   $scope.showDetails = false;
   
   
-  // now, query the service and get hold of the dishes data from the service.
-  // to do the above, introduce a new statement like this:
-
-  $scope.dishes= menuFactory.getDishes();
-  //above: calling the getDishes method of the menuFactory that is going to return
-  // the dishes object, and then we put that dishes object onto the scope.
-
-  // dependency injection:
-  // now we need to inject the service into this controller.
-  // "introducing the sevice through dependency injection:" put 'menuFactory' after the scope, i.e.:
-  // .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
-  // then after the scope add the mae of the function without the quotes
-
+  $scope.showMenu = false;
+              $scope.message = "Loading ...";
+                          $scope.dishes= {};
+                          menuFactory.getDishes()
+              .then(
+                  function(response) {
+                      $scope.dishes = response.data;
+                      $scope.showMenu = true;
+                  },
+                  function(response) {
+                      $scope.message = "Error: "+response.status + " " + response.statusText;
+                  }
+              );
 
 
   $scope.select = function(setTab) {
@@ -82,12 +82,19 @@ angular.module('confusionApp')
 .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
 
 
-  // replace the var dish={ variable with the call to the factory
-  // that supplies the dish information:
-
-            var dish= menuFactory.getDish(parseInt($stateParams.id,10));
-
-            $scope.dish = dish;
+            $scope.dish = {};
+            $scope.showDish = false;
+            $scope.message="Loading ...";
+                        menuFactory.getDish(parseInt($stateParams.id,10))
+            .then(
+                function(response){
+                    $scope.dish = response.data;
+                    $scope.showDish=true;
+                },
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
+                }
+            );
             
             
         }])
@@ -114,7 +121,22 @@ angular.module('confusionApp')
 
         .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
 
-            $scope.featureddish= menuFactory.getDish(0);
+            $scope.dish = {};
+                        $scope.showDish = false;
+                        $scope.message="Loading ...";
+
+                        menuFactory.getDish(0)
+                        .then(
+                            function(response){
+                                $scope.dish = response.data;
+                                $scope.showDish = true;
+                            },
+                            function(response) {
+                                $scope.message = "Error: "+response.status + " " + response.statusText;
+                            }
+                        );
+
+
             $scope.promotion= menuFactory.getPromotion(0);
             $scope.featuredleader= corporateFactory.getLeader(1);
             
