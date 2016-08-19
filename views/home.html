@@ -1,20 +1,18 @@
-
     <div class="container" ng-controller="IndexController">
         <div class="row row-content">
-            <div class="col-xs-12 col-sm-9 col-sm-pull-3">
-                <div ng-if="!showDish">
-                    <h3>{{message}}</h3>
-                </div>
-                <div class="media" ng-if="showDish">
+            <div class="col-xs-12 col-sm-3 col-sm-push-9">
                 <p style="padding:20px;"></p>
                 <h3 align=center>Our Lipsmacking Culinary Creations</h3>
             </div>
+
             <div class="col-xs-12 col-sm-9 col-sm-pull-3">
+                 <div ng-if="!showDish">
+                    <h3>{{message}}</h3>
+                </div>
 
-
-                <div class="media">
+                <div class="media" ng-if="showDish">
                     <div class="media-left media-middle">
-                        <a ui-sref="app.dishdetails({id: featureddish._id})">
+                        <a ui-sref="app.dishdetails({id: featureddish.id})">
                             <img class="media-object img-thumbnail" ng-src={{featureddish.image}}>
                         </a>
                     </div>
@@ -25,9 +23,7 @@
                         </h2>
                         <p>{{featureddish.description}}</p>
                     </div>
-                </div>
-
-				
+                </div>				
             </div>
         </div>
 
@@ -72,13 +68,13 @@
                     <div class="media-left media-middle">
                         <a href="#">
                             <img class="media-object img-thumbnail" 
-                                 ng-src={{featuredleader.image}} alt={{featuredleader.name}}>
+                                 ng-src={{executivechef.image}} alt={{executivechef.name}}>
                         </a>
                     </div>
                     <div class="media-body">
-                        <h2 class="media-heading">{{featuredleader.name}} 
-                        <small>{{featuredleader.designation}}</small></h2>
-                        <p>{{featuredleader.description}}</p>
+                        <h2 class="media-heading">{{executivechef.name}} 
+                        <small>{{executivechef.designation}}</small></h2>
+                        <p>{{executivechef.description}}</p>
                     </div>
                 </div>
 
@@ -86,3 +82,4 @@
             </div>
         </div>
     </div>
+</div>
