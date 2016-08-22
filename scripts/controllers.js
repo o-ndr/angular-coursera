@@ -132,7 +132,6 @@ angular.module('confusionApp')
                                 }
                 );
 
-            // $scope.promotion= menuFactory.getPromotion(0);
 
                         $scope.showPromotion = false;
                         $scope.message="Loading ...";
@@ -149,7 +148,6 @@ angular.module('confusionApp')
 
 
 
-            // $scope.executivechef= corporateFactory.getLeader(1);
 
                         $scope.showExecutivechef = false;
                         $scope.message="Loading ...";
@@ -171,18 +169,18 @@ angular.module('confusionApp')
 
         .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
 
-            // $scope.leadership= corporateFactory.getLeaders();
             $scope.showLeadership = false;
             $scope.message = "Loading ...";
             corporateFactory.getLeader().query(
                 function(response) {
-                    $scope.corpleader = response;
+                    $scope.leadership = response;
                     $scope.showLeadership = true;
                 },
                 function(response) {
                     $scope.message = "Error: "+response.status + " " + response.statusText;
                 });
-                       
+
+                                   
         }])
 
 

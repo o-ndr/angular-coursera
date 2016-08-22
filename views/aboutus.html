@@ -52,16 +52,20 @@
 
         <div class="row row-content">
             <div class="col-xs-12 col-sm-9">
-                <div ng-if="!showLeadership">
+               
+                <h2>Corporate Leadership</h2>
+                 <div ng-if="!showLeadership">
                     <h3>{{message}}</h3>
                 </div>
-                <h2>Corporate Leadership!!</h2>
-                    <ul class="media-list">            
-                        <li class="media" ng-if="showExecutivechef" ng-repeat="corpleader in leadership">
+
+                 <div class="media" ng-if="showLeadership"> 
+
+                    <ul class="media-list tab-pane fade in active">
+                        <li class="media" ng-repeat="corpleader in leadership">
                             <div class="media-left media-middle">
-                                <a ui-sref="app.aboutus({id: corpleader.id})">
-                                <img class="media-object img-thumbnail" ng-src={{corpleader.image}} alt="...">
-                                </a>
+                                
+                                <img class="media-object img-thumbnail" ng-src={{corpleader.image}} alt="">
+                               
                             </div>
                             <div class="media-body">
                                 <h2 class="media-heading">{{corpleader.name}} <small>{{corpleader.designation}}, {{corpleader.abbr}}</small> </h2>
@@ -69,7 +73,8 @@
                             </div>
                         </li>
                     </ul>
-            </div>         
+            </div> 
+            </div>        
 
 
             <div class="col-xs-12 col-sm-3">
