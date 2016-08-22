@@ -22,7 +22,7 @@ angular.module('confusionApp')
                                     };
                     
                     this.getPromotion = function(index) {
-                                        return promotions[index];
+                                        return $resource(baseURL+"promotions/:id", null, {'update':{method:'PUT' }});
                                     };
 
         }])
