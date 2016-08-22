@@ -52,11 +52,14 @@
 
         <div class="row row-content">
             <div class="col-xs-12 col-sm-9">
-                <h2>Corporate Leadership</h2>
+                <div ng-if="!showLeadership">
+                    <h3>{{message}}</h3>
+                </div>
+                <h2>Corporate Leadership!!</h2>
                     <ul class="media-list">            
-                        <li class="media" ng-repeat="corpleader in leadership">
+                        <li class="media" ng-if="showExecutivechef" ng-repeat="corpleader in leadership">
                             <div class="media-left media-middle">
-                                <a href="#">
+                                <a ui-sref="app.aboutus({id: corpleader.id})">
                                 <img class="media-object img-thumbnail" ng-src={{corpleader.image}} alt="...">
                                 </a>
                             </div>

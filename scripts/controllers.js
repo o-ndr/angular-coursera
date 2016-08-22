@@ -151,7 +151,7 @@ angular.module('confusionApp')
 
             // $scope.executivechef= corporateFactory.getLeader(1);
 
-            $scope.showExecutivechef = false;
+                        $scope.showExecutivechef = false;
                         $scope.message="Loading ...";
                         $scope.executivechef = corporateFactory.getLeader().get({id:3})
                             .$promise.then(
@@ -171,7 +171,17 @@ angular.module('confusionApp')
 
         .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
 
-            $scope.leadership= corporateFactory.getLeaders();
+            // $scope.leadership= corporateFactory.getLeaders();
+            $scope.showLeadership = false;
+            $scope.message = "Loading ...";
+            corporateFactory.getLeader().query(
+                function(response) {
+                    $scope.corpleader = response;
+                    $scope.showLeadership = true;
+                },
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
+                });
                        
         }])
 
