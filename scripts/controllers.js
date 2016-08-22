@@ -149,7 +149,20 @@ angular.module('confusionApp')
 
 
 
-            $scope.executivechef= corporateFactory.getLeader(1);
+            // $scope.executivechef= corporateFactory.getLeader(1);
+
+            $scope.showExecutivechef = false;
+                        $scope.message="Loading ...";
+                        $scope.executivechef = corporateFactory.getLeader().get({id:3})
+                            .$promise.then(
+                                function(response){
+                                    $scope.executivechef = response;
+                                    $scope.showExecutivechef = true;
+                                },
+                                function(response) {
+                                    $scope.message = "Error: "+response.status + " " + response.statusText;
+                                }
+                );
             
             
         }])
