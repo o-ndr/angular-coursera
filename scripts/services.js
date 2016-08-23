@@ -9,7 +9,7 @@ angular.module('confusionApp')
                                         return $resource(baseURL+"dishes/:id", null, {'update':{method:'PUT' }});
                                     };
                     
-                    this.getPromotion = function(index) {
+                    this.getPromotion = function() {
                                         return $resource(baseURL+"promotions/:id", null, {'update':{method:'PUT' }});
                                     };
 
@@ -21,7 +21,7 @@ angular.module('confusionApp')
     
             var corpfac = {};
                                      
-                    corpfac.getLeader = function(index) {
+                    corpfac.getLeader = function() {
                                         return $resource(baseURL+"leadership/:id", null, {'update':{method:'PUT' }});
                                     };
 
@@ -29,5 +29,15 @@ angular.module('confusionApp')
     
     
         }])
+
+
+      .factory('feedbackFactory', ['$resource', 'baseURL', function($resource, baseURL) {
+    
+                this.recordFeedback = function() {
+                                        return $resource(baseURL+"feedback/:id", null, {'update':{method:'PUT' }});
+                                    };
+    
+        }])
+
 
 ;
