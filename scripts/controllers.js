@@ -67,13 +67,12 @@ angular.module('confusionApp')
                     console.log('incorrect');
                 }
                 else {
-
-                    feedbackFactory.recordFeedback().save($scope.feedback);
-
                     $scope.invalidChannelSelection = false;
+                    console.log($scope.feedback);
+                    
+                    feedbackFactory.recordFeedback().save($scope.feedback);
+                    $scope.feedback = {firstName:"", lastName:"", agree:false, mychannel:"", email:"" };
 
-                    $scope.feedback = {mychannel:'', firstName:'', lastName:'', agree:false, email:'' };
-                    $scope.feedback.mychannel = '';
                     $scope.feedbackForm.$setPristine();                   
                 }
             };

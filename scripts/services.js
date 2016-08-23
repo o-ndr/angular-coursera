@@ -33,9 +33,13 @@ angular.module('confusionApp')
 
       .factory('feedbackFactory', ['$resource', 'baseURL', function($resource, baseURL) {
     
-                this.recordFeedback = function() {
+
+                var feedbackfac = {};
+                
+                feedbackfac.recordFeedback = function() {
                                         return $resource(baseURL+"feedback/:id", null, {'update':{method:'PUT' }});
                                     };
+                return feedbackfac;
     
         }])
 
